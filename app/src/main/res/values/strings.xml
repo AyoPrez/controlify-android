@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Controlify</string>
+
+    <string name="session_time">%1$s - %2$s</string>
+    <string name="day_total_time">%1$s H %2$s Min %3$s S</string>
+    <string name="day_total_time_no_hours">%1$s Min %2$s S</string>
+    <string name="day_total_time_only_seconds">%2$s S</string>
+</resources>
