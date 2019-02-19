@@ -22,19 +22,23 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-
-    <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.PagerTabStrip
+                android:id="@+id/pager_tab_strip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                style="@style/PagerTitleStripTextAppearance"
+                android:background="@color/white"
+                android:textColor="@color/darkGreen"/>
+
+    </androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>
 

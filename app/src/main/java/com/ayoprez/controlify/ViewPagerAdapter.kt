@@ -18,4 +18,12 @@ class ViewPagerAdapter(fm: FragmentManager, private val fragmentList: MutableLis
     override fun getCount(): Int {
         return 3
     }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when(position){
+            0 -> "Agosto"
+            1 -> "Septiembre"
+            else -> "Noviembre"
+        }
+    }
 }

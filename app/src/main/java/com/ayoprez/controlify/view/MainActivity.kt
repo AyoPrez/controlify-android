@@ -3,6 +3,7 @@ package com.ayoprez.controlify.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.PagerTabStrip
 import androidx.viewpager.widget.ViewPager
 import com.ayoprez.controlify.R
 import com.ayoprez.controlify.UpdateService
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     private lateinit var viewPager: ViewPager
     private lateinit var pagerAdapter: ViewPagerAdapter
+    private lateinit var pagerStripTitle: PagerTabStrip
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,9 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     fun setupViewPager(){
+
+        pagerStripTitle = pager_tab_strip
+        pagerStripTitle.setTabIndicatorColorResource(R.color.white)
 
         val fragList = arrayListOf<MonthViewContentFragment>().toMutableList()
         fragList.add(MonthViewContentFragment())

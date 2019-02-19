@@ -37,5 +37,10 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="PagerTitleStripTextAppearance">
+        <item name="android:textColor">@color/darkGreen</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
 </resources>
