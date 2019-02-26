@@ -23,7 +23,8 @@ class ViewPagerAdapter(fm: FragmentManager, private val fragmentList: MutableLis
         return when(position){
             0 -> "Agosto"
             1 -> "Septiembre"
-            else -> "Noviembre"
+            2 -> "Octubre"
+            else -> ""
         }
     }
 }

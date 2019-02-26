@@ -19,6 +19,13 @@ class UpdateService: Service() {
     override fun onBind(intent: Intent?): IBinder? {
         val screenOn = intent!!.getBooleanExtra("screen_state", false)
         if (!screenOn) {
+
+            /*
+            * Aquí la aplicación coge la fecha. La separa y si en la base de datos ya está el día entonces actualiza los registros de ese día con una nueva entrada.
+            * Si no está y la última fecha disponible es anterior a la fecha actual, crea un nuevo registro con la nueva fecha e introduce los datos.
+            * Esto datos se actualizarán constantemente durante el día
+            * */
+
             System.out.println("##∞Screen is off 2")
         } else {
             System.out.println("##∞Screen is on 2")

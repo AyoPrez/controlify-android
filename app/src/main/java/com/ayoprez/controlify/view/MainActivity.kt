@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager
 import com.ayoprez.controlify.R
 import com.ayoprez.controlify.UpdateService
 import com.ayoprez.controlify.ViewPagerAdapter
+import com.ayoprez.controlify.model.SessionsData
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -47,8 +48,16 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         viewPager = pager
         pagerAdapter = ViewPagerAdapter(supportFragmentManager, fragList)
         viewPager.adapter = pagerAdapter
-        pager.setCurrentItem(1, false)
+        pager.setCurrentItem(2, false)
 
         //pager.addOnPageChangeListener(this)
+    }
+
+    override fun informationForCurrentPager(dataList: MutableList<SessionsData>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun informationForLastPager(dataList: MutableList<SessionsData>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
