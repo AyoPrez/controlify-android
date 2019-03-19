@@ -114,4 +114,38 @@ class MainPresenterTest {
     }
 
     //endregion
+
+    @Test
+    fun shouldReturnTheSessionsOFADaySorted(){
+        val list = presenter.sortSessionsInADay(DummyData().getSessionDataList())
+
+        val firstSession = list[2].sessions.first().startSessionTime
+        val lastSession = list[2].sessions.last().startSessionTime
+
+        val isGreater: Boolean = firstSession > lastSession
+
+        Assert.assertTrue(isGreater)
+    }
+
+    @Test
+    fun shouldReturnTheSessionsSortedAfterSortTheMonths(){
+        val list = presenter.distributeDataByMonth(presenter.sortSessionsInADay(DummyData().getSessionDataList()))
+
+        val firstSession = list[0][0].sessions.first().startSessionTime
+        val lastSession = list[0][0].sessions.last().startSessionTime
+
+        val isGreater: Boolean = firstSession > lastSession
+
+        Assert.assertTrue(isGreater)
+    }
+
+    @Test
+    fun shouldGetThatIsTheSameYear(){
+        val list = DummyData().getSessionDataList()
+
+        val isSameYear = presenter.isCurrentYear(list[0].day)
+
+        Assert.assertTrue(isSameYear)
+    }
+
 }

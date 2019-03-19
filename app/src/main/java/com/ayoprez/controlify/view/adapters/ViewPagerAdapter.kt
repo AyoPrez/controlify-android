@@ -1,4 +1,4 @@
-package com.ayoprez.controlify
+package com.ayoprez.controlify.view.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

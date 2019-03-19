@@ -1,9 +1,10 @@
-package com.ayoprez.controlify
+package com.ayoprez.controlify.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ayoprez.controlify.R
 import com.ayoprez.controlify.model.SessionsData
 import com.ayoprez.controlify.viewholder.MainListViewHolder
 import kotlinx.android.synthetic.main.list_header.view.*

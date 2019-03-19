@@ -3,9 +3,9 @@ package com.ayoprez.controlify
 import com.ayoprez.controlify.model.Session
 import com.ayoprez.controlify.model.SessionsData
 
-class DummyData {
+class DummyCorruptedData {
 
-    fun getSessionDataList(): MutableList<SessionsData> {
+    fun getSessionCorruptedDataList(): MutableList<SessionsData> {
 
         val list = mutableListOf<SessionsData>()
 
@@ -18,7 +18,7 @@ class DummyData {
         return list
     }
 
-    fun getSessionDataListWithEmptyElements(): MutableList<SessionsData> {
+    fun getSessionCorruptedDataListWithEmptyElements(): MutableList<SessionsData> {
 
         val list = mutableListOf<SessionsData>()
 
@@ -34,80 +34,68 @@ class DummyData {
         return list
     }
 
-    fun getSessionDataListWithWrongFormattedDateElements(): MutableList<SessionsData> {
-
-        val list = mutableListOf<SessionsData>()
-
-        list.addAll(getJuneSessionData())
-        list.addAll(getAprilWrongFormattedSessionData())
-        list.addAll(getDecember18SessionData())
-        list.addAll(getMaySessionData())
-
-        return list
-    }
-
     private fun getDecember18SessionData() : MutableList<SessionsData> {
         val sessionsDataDecember1 = SessionsData().apply {
-            day = "01/12/2018"
-            totalDayTime = "00:27:48"
+            day = "01/1T/2018"
+            totalDayTime = "00:2:48"
         }
 
         val sessionDecember1_1 = Session().apply {
-            startSessionTime = "07:48:50"
-            endSessionTime = "07:52:17"
+            startSessionTime = "048:50"
+            endSessionTime = "052:17"
         }
         val sessionDecember1_2 = Session().apply {
-            startSessionTime = "08:18:20"
-            endSessionTime = "08:20:45"
+            startSessionTime = "018:20"
+            endSessionTime = "020:45"
         }
 
         sessionsDataDecember1.sessions = arrayListOf(sessionDecember1_1, sessionDecember1_2)
 
         val sessionsDataDecember2 = SessionsData().apply {
-            day = "03/12/2018"
-            totalDayTime = "00:27:48"
+            day = "03/1T/2018"
+            totalDayTime = "027:48"
         }
 
         val sessionDecember2_1 = Session().apply {
-            startSessionTime = "07:48:50"
-            endSessionTime = "07:52:17"
+            startSessionTime = "048:50"
+            endSessionTime = "052:17"
         }
 
         val sessionDecember2_2 = Session().apply {
-            startSessionTime = "08:18:20"
-            endSessionTime = "08:20:45"
+            startSessionTime = "018:20"
+            endSessionTime = "020:45"
         }
 
         val sessionDecember2_3 = Session().apply {
-            startSessionTime = "09:28:40"
-            endSessionTime = "09:35:13"
+            startSessionTime = "028:40"
+            endSessionTime = "035:13"
         }
 
         sessionsDataDecember2.sessions = arrayListOf(sessionDecember2_1, sessionDecember2_2, sessionDecember2_3)
 
         val sessionsDataDecember3 = SessionsData().apply {
             day = "07/12/2018"
-            totalDayTime = "00:27:48"
+            totalDayTime = "00:27"
         }
         val sessionDecember3_1 = Session().apply {
-            startSessionTime = "07:48:50"
-            endSessionTime = "07:52:17"
+            startSessionTime = "07:48"
+            endSessionTime = "07:52"
         }
         val sessionDecember3_2 = Session().apply {
-            startSessionTime = "09:28:40"
-            endSessionTime = "09:35:13"
+            startSessionTime = "09:28"
+            endSessionTime = "09:35"
         }
         val sessionDecember3_3 = Session().apply {
-            startSessionTime = "09:38:50"
-            endSessionTime = "09:42:17"
+            startSessionTime = "09:38"
+            endSessionTime = "09:42"
         }
         val sessionDecember3_4 = Session().apply {
-            startSessionTime = "17:48:50"
-            endSessionTime = "17:52:17"
+            startSessionTime = "17:48"
+            endSessionTime = "17:52"
         }
         val sessionDecember3_5 = Session().apply {
-            startSessionTime = "21:18:50"
-            endSessionTime = "21:28:17"
+            startSessionTime = "21:18"
+            endSessionTime = "21:28"
         }
 
         sessionsDataDecember3.sessions = arrayListOf(sessionDecember3_1, sessionDecember3_2, sessionDecember3_3, sessionDecember3_4, sessionDecember3_5)
@@ -225,7 +213,7 @@ class DummyData {
 
         return mutableListOf(sessionsDataApril18_1, sessionsDataApril18_2, sessionsDataApril18_3, sessionsDataApril18_4)
     }
-    
+
     private fun getAprilSessionData() : MutableList<SessionsData> {
         val sessionsDataApril1 = SessionsData().apply {
             day = "01/04/2019"

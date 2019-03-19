@@ -7,9 +7,11 @@ import androidx.viewpager.widget.PagerTabStrip
 import androidx.viewpager.widget.ViewPager
 import com.ayoprez.controlify.R
 import com.ayoprez.controlify.UpdateService
-import com.ayoprez.controlify.ViewPagerAdapter
 import com.ayoprez.controlify.model.SessionsData
+import com.ayoprez.controlify.presenter.MainPresenter
+import com.ayoprez.controlify.view.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 
 
 class MainActivity : AppCompatActivity(), MainActivityView {
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     private lateinit var viewPager: ViewPager
     private lateinit var pagerAdapter: ViewPagerAdapter
     private lateinit var pagerStripTitle: PagerTabStrip
+
+    val presenter: MainPresenter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

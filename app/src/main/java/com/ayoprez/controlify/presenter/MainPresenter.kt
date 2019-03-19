@@ -7,6 +7,10 @@ import org.threeten.bp.format.DateTimeParseException
 
 class MainPresenter {
 
+    fun isCurrentYear(date: String): Boolean { //With this method I can say in the UI if show or not the year after the month's name in the title of the viewpager
+        return LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy")).year == LocalDate.now().year
+    }
+
     fun distributeDataByMonth(dataList: MutableList<SessionsData>) : MutableList<MutableList<SessionsData>> {
 
         val dateTimeStrToLocalDateTime: (SessionsData) -> LocalDate = {
@@ -50,18 +54,18 @@ class MainPresenter {
             .toMutableList()
     }
 
-    fun sortSessionsInADay(){
-        //Este método debe devolver las sesiones dentro de un día ordenados. Los primero serán los más tardes.
-        //Se ordenarán siguiendo la primera de las dos horas. La hora en la que se encendió la pantalla.
-        //Resultado del array:
-        //1-17:45
-        //2-17:33
-        //3-12:09
+    fun sortSessionsInADay(dataList: MutableList<SessionsData>): MutableList<SessionsData> {
+        val sessionsList: MutableList<SessionsData> = mutableListOf()
 
-    }
+        for (data in dataList) {
+            val sortedData = data.sessions
+                .sortedByDescending { it.startSessionTime }
 
-    //This should be done and tested. Maybe not here, but should be done and tested.
-    fun calculateTotalTime(){
-        //TODO
+            data.sessions.clear()
+            data.sessions.addAll(sortedData)
+
+            sessionsList.add(data)
+        }
+        return sessionsList
     }
 }

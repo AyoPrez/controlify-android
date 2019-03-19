@@ -1,8 +1,17 @@
 package com.ayoprez.controlify.di
 
-import org.koin.dsl.module.module
+import com.ayoprez.controlify.database.DatabaseManagerImpl
+import com.ayoprez.controlify.database.IDatabaseManager
+import com.ayoprez.controlify.presenter.MainPresenter
+import com.ayoprez.controlify.presenter.ReceiverPresenter
+import org.koin.dsl.module
 
 val controlifyAppModule = module {
 
-    factory {  }
+    single<IDatabaseManager> {
+        DatabaseManagerImpl()
+    }
+
+    factory { ReceiverPresenter(get()) }
+    factory { MainPresenter() }
 }
