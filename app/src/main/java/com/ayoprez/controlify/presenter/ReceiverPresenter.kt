@@ -21,7 +21,7 @@ class ReceiverPresenter(private val databaseManager: IDatabaseManager, private v
 
         sessionsFromToday.sessions.add(newSession)
 
-        newSession.save()
+        databaseManager.updateSession(newSession)
 
         databaseManager.updateSessionsData(sessionsFromToday)
     }
@@ -32,20 +32,24 @@ class ReceiverPresenter(private val databaseManager: IDatabaseManager, private v
         val sessions = sessionsFromToday.sessions
 
         if (sessions.isEmpty()) {
-            val session = Session("", timeFormatUtils.getTimeFromDateTime(dateTime), "", 0)
-            session.save()
+            val session = Session(0,"", timeFormatUtils.getTimeFromDateTime(dateTime), "", 0)
+            databaseManager.insertSession(session)
 
             sessions.add(session)
+
+            sessionsFromToday.sessions = sessions
+
+            databaseManager.insertSessionsData(sessionsFromToday)
         } else {
             //Should be tested that the uncompleted session (session with only beginning, the current session) is the last and not the first
             val session = sessions.last()
 
             session.endSessionTime = timeFormatUtils.getTimeFromDateTime(dateTime)
 
-            session.save()
-        }
+            databaseManager.updateSession(session)
 
-        databaseManager.updateSessionsData(sessionsFromToday)
+//            databaseManager.updateSessionsData(sessionsFromToday)
+        }
     }
 
     fun introduceTotalSessionTimeInDatabase() {
@@ -54,7 +58,7 @@ class ReceiverPresenter(private val databaseManager: IDatabaseManager, private v
         for (session in sessionsFromToday.sessions) {
             if (session.totalSessionTime.isEmpty() || session.totalSessionTime.isBlank()){
                 session.totalSessionTime = timeFormatUtils.calculateTotalTimeOfSession(session.startSessionTime, session.endSessionTime)
-                session.save()
+                databaseManager.updateSession(session)
             }
         }
 

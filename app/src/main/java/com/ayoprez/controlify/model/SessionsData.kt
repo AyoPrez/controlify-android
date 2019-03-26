@@ -1,6 +1,7 @@
 package com.ayoprez.controlify.model
 
-import com.orm.SugarRecord
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /*
 * Day
@@ -11,8 +12,10 @@ import com.orm.SugarRecord
 *
 * */
 
+@Entity
 data class SessionsData (
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var day:  String = "",
     var totalDayTime: String = "",
     var sessions: ArrayList<Session> = arrayListOf()
-): SugarRecord()
+)

@@ -1,8 +1,8 @@
 package com.ayoprez.controlify.database
 
 import com.ayoprez.controlify.FormatTimeUtils
+import com.ayoprez.controlify.model.Session
 import com.ayoprez.controlify.model.SessionsData
-import com.orm.SugarRecord
 import org.koin.core.KoinComponent
 import org.koin.core.get
 import org.threeten.bp.LocalDate
@@ -11,9 +11,10 @@ import org.threeten.bp.LocalDateTime
 class DatabaseManagerImpl : IDatabaseManager, KoinComponent {
 
     private val timeFormatTimeUtils: FormatTimeUtils = get()
+    private val database: SessionDataDao = get()
 
     override fun getCompleteListOfSessions(): MutableList<SessionsData> {
-        return SugarRecord.listAll(SessionsData::class.java)
+        return database.getAll()
     }
 
     override fun getLastSessionWithoutEnd() {
@@ -21,8 +22,7 @@ class DatabaseManagerImpl : IDatabaseManager, KoinComponent {
     }
 
     override fun getCompleteListOfSessionsFromToday(): SessionsData {
-        val todayDataSessions = SugarRecord.find(SessionsData::class.java, "day = ?", timeFormatTimeUtils.getDateFromDateTime(LocalDateTime.now()))
-
+        val todayDataSessions = database.getSessionsDataByDate(timeFormatTimeUtils.getDateFromDateTime(LocalDateTime.now()))
 
         return if (todayDataSessions.isEmpty()) {
             val sessionsData = SessionsData()
@@ -35,15 +35,27 @@ class DatabaseManagerImpl : IDatabaseManager, KoinComponent {
     }
 
     override fun getCompleteListOfSessionsByDate(date: LocalDate): SessionsData {
-        return SugarRecord.find(SessionsData::class.java, "day = ?", date.toString())[0]
+        return database.getSessionsDataByDate(date.toString())[0]
     }
 
     override fun getLastCompleteListOfSessions(): SessionsData {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+
     override fun updateSessionsData(sessionsData: SessionsData) {
-        sessionsData.save()
+        database.updateSessions(sessionsData)
     }
 
+    override fun updateSession(session: Session) {
+        database.updateSession(session)
+    }
+
+    override fun insertSessionsData(sessionsData: SessionsData) {
+        database.insertSessions(sessionsData)
+    }
+
+    override fun insertSession(session: Session) {
+        database.insertSession(session)
+    }
 }
