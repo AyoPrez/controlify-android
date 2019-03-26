@@ -1,5 +1,6 @@
 package com.ayoprez.controlify.di
 
+import com.ayoprez.controlify.FormatTimeUtils
 import com.ayoprez.controlify.database.DatabaseManagerImpl
 import com.ayoprez.controlify.database.IDatabaseManager
 import com.ayoprez.controlify.presenter.MainPresenter
@@ -12,6 +13,10 @@ val controlifyAppModule = module {
         DatabaseManagerImpl()
     }
 
-    factory { ReceiverPresenter(get()) }
-    factory { MainPresenter() }
+    single {
+        FormatTimeUtils()
+    }
+
+    factory { ReceiverPresenter(get(), get()) }
+    factory { MainPresenter(get()) }
 }

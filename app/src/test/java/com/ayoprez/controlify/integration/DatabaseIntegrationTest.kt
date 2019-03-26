@@ -25,7 +25,7 @@ class DatabaseIntegrationTest {
         receiverPresenter = ReceiverPresenter(databaseManager)
     }
 
-    //Estoy testeando esto. Aún no está acabado. Falta un método. Además, debo probar los métodos ya testeados pero con datos corruptos
+    //Estoy testeando esto. Aún no está acabado. Falta un método, introduceEndSessionTimeInDatabase(). Además, debo probar los métodos ya testeados pero con datos corruptos
     //En plan, vacíos, con letras, incompletos, etc. Para ello he de terminar de corromper los dummy data del "DummyCorruptedData".
     // El objetivo es:
     // primero, que no crashee la app.
@@ -95,6 +95,19 @@ class DatabaseIntegrationTest {
         receiverPresenter.introduceStartSessionTimeInDatabase(LocalDateTime.parse("2019-03-12T22:02:39.675"))
 
         sessionsFromToday.sessions[0].startSessionTime = receiverPresenter.getTimeFromDateTime(LocalDateTime.parse("2019-03-12T22:02:39.675"))
+
+        Mockito.verify(databaseManager, times(1)).updateSessionsData(sessionsFromToday)
+    }
+
+    @Test
+    fun shouldUpdateNewEndSession(){
+        val sessionsFromToday = DummyData().getSessionDataList()[0]
+
+        Mockito.`when`(databaseManager.getCompleteListOfSessionsFromToday()).thenReturn(sessionsFromToday)
+
+        receiverPresenter.introduceEndSessionTimeInDatabase(LocalDateTime.parse("2019-03-12T22:02:39.675"))
+
+        sessionsFromToday.sessions[0].endSessionTime = receiverPresenter.getTimeFromDateTime(LocalDateTime.parse("2019-03-12T22:02:39.675"))
 
         Mockito.verify(databaseManager, times(1)).updateSessionsData(sessionsFromToday)
     }

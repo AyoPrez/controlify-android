@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         setupViewPager()
     }
 
-    fun setupViewPager(){
+    private fun setupViewPager(){
 
         pagerStripTitle = pager_tab_strip
         pagerStripTitle.setTabIndicatorColorResource(R.color.white)

@@ -16,12 +16,15 @@ class ScreenStateReceiver : BroadcastReceiver(), KoinComponent {
         var screenOff = true
 
         if (intent!!.action == Intent.ACTION_SCREEN_ON) {
-            val now = LocalDateTime.now().toString()
+            val now = LocalDateTime.now()
             System.out.println("##∞Screen is on")
+            receiverPresenter.introduceStartSessionTimeInDatabase(now)
+
             screenOff = false
         } else if (intent.action == Intent.ACTION_SCREEN_OFF){
-            val now = LocalDateTime.now().toString()
+            val now = LocalDateTime.now()
             System.out.println("##∞Screen is off")
+            receiverPresenter.introduceEndSessionTimeInDatabase(now)
         }
 
         val i = Intent(context, UpdateService::class.java)

@@ -1,5 +1,7 @@
 package com.ayoprez.controlify.model
 
+import com.orm.SugarRecord
+
 /*
 *
 * StartSessionTime
@@ -21,4 +23,4 @@ data class Session (
     var endSessionTime: String = "",
     var totalSessionTime: String = "",
     var sessionLevel: Int = -1
-)
+): SugarRecord()

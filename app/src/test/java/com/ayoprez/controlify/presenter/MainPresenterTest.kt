@@ -1,12 +1,13 @@
 package com.ayoprez.controlify.presenter
 
 import com.ayoprez.controlify.DummyData
+import com.ayoprez.controlify.database.DatabaseManagerImpl
 import org.junit.Assert
 import org.junit.Test
 
 class MainPresenterTest {
 
-    private val presenter = MainPresenter()
+    private val presenter = MainPresenter(DatabaseManagerImpl())
 
     //region Months
 

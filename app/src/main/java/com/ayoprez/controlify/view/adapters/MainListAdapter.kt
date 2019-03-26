@@ -11,11 +11,8 @@ import kotlinx.android.synthetic.main.list_header.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import org.threeten.bp.ZoneOffset
 import org.threeten.bp.format.DateTimeFormatter
-import java.util.*
 
-class MainListAdapter : RecyclerView.Adapter<MainListViewHolder>() {
-
-    var sessionData: MutableList<SessionsData>? = ArrayList()
+class MainListAdapter(var sessionData: MutableList<SessionsData>?) : RecyclerView.Adapter<MainListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)

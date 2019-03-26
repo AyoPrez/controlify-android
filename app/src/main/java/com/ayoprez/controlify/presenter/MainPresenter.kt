@@ -1,11 +1,13 @@
 package com.ayoprez.controlify.presenter
 
+import com.ayoprez.controlify.database.IDatabaseManager
 import com.ayoprez.controlify.model.SessionsData
+import org.koin.core.KoinComponent
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.DateTimeParseException
 
-class MainPresenter {
+class MainPresenter(private val databaseManager: IDatabaseManager): KoinComponent {
 
     fun isCurrentYear(date: String): Boolean { //With this method I can say in the UI if show or not the year after the month's name in the title of the viewpager
         return LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy")).year == LocalDate.now().year
@@ -67,5 +69,15 @@ class MainPresenter {
             sessionsList.add(data)
         }
         return sessionsList
+    }
+
+//    fun getLastMonthData(): MutableList<SessionsData>{
+//
+//    }
+//
+//    fun getLastThreeMonthsData(): MutableList<SessionsData>{}
+
+    fun getAllData(): MutableList<SessionsData> {
+        return databaseManager.getCompleteListOfSessions()
     }
 }

@@ -37,8 +37,8 @@ class ReceiverPresenterTest {
 
     @Test
     fun shouldGetTimeFromDateTime() {
-        val timeParsed = LocalDateTime.parse("2019-03-12T17:04:28.550")
-        val result = "17:04:28"
+        val timeParsed = LocalDateTime.parse("2019-03-12T17:24:28.550")
+        val result = "17:24:28"
 
         val date = presenter.getTimeFromDateTime(timeParsed)
 

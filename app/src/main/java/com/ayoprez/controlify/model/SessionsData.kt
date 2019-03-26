@@ -1,5 +1,6 @@
 package com.ayoprez.controlify.model
 
+import com.orm.SugarRecord
 
 /*
 * Day
@@ -14,4 +15,4 @@ data class SessionsData (
     var day:  String = "",
     var totalDayTime: String = "",
     var sessions: ArrayList<Session> = arrayListOf()
-)
+): SugarRecord()
