@@ -17,5 +17,5 @@ data class SessionsData (
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var day:  String = "",
     var totalDayTime: String = "",
-    var sessions: ArrayList<Session> = arrayListOf()
+    var session: ArrayList<Session> = arrayListOf()
 )

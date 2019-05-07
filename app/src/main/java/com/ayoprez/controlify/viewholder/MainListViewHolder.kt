@@ -15,15 +15,13 @@ import com.ayoprez.controlify.model.SessionsData
 import kotlinx.android.synthetic.main.list_content.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 
-
-
 class MainListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(sessionsData: MutableList<SessionsData>){
 
         var intMaxNumberOfChildren = 0
         for (index in 0 until sessionsData.size) {
-            val intMaxSizeTemp = sessionsData[index].sessions.size
+            val intMaxSizeTemp = sessionsData[index].session.size
             if (intMaxSizeTemp > intMaxNumberOfChildren) intMaxNumberOfChildren = intMaxSizeTemp
         }
 

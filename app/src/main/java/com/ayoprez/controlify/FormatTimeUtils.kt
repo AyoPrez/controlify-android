@@ -48,7 +48,7 @@ class FormatTimeUtils {
         var totalSessionTimeInSeconds = 0
 
         for (session in listOfSessions) {
-            if (session.totalSessionTime.isNotEmpty() || session.totalSessionTime.isNotBlank()) {
+            if (session.totalSessionTime.isNotBlank()) {
                 val sessionTime = LocalTime.parse(session.totalSessionTime, DateTimeFormatter.ofPattern(timePattern))
 
                 totalSessionTimeInSeconds += sessionTime.toSecondOfDay()

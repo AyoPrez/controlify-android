@@ -5,4 +5,11 @@
     <string name="day_total_time">%1$s H %2$s Min %3$s S</string>
     <string name="day_total_time_no_hours">%1$s Min %2$s S</string>
     <string name="day_total_time_only_seconds">%2$s S</string>
+    
+    <!-- Errors -->
+    <string name="error_title">Error</string>
+    <string name="error_unknown">There was an error</string>
+    <string name="error_getting_data_local_database">There was an error while getting the data</string>
+    <string name="error_ok_button">OK</string>
+
 </resources>

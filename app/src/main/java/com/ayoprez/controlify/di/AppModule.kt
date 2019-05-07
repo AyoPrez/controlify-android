@@ -25,6 +25,6 @@ val controlifyAppModule = module {
     single<IDatabaseManager> {
         DatabaseManagerImpl()
     }
-    factory { ReceiverPresenter(get(), get()) }
+    factory { ReceiverPresenter(get()) }
     factory { MainPresenter(get()) }
 }

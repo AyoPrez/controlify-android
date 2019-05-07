@@ -2,6 +2,7 @@ package com.ayoprez.controlify.presenter
 
 import com.ayoprez.controlify.database.IDatabaseManager
 import com.ayoprez.controlify.model.SessionsData
+import io.reactivex.Single
 import org.koin.core.KoinComponent
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
@@ -60,11 +61,11 @@ class MainPresenter(private val databaseManager: IDatabaseManager): KoinComponen
         val sessionsList: MutableList<SessionsData> = mutableListOf()
 
         for (data in dataList) {
-            val sortedData = data.sessions
+            val sortedData = data.session
                 .sortedByDescending { it.startSessionTime }
 
-            data.sessions.clear()
-            data.sessions.addAll(sortedData)
+            data.session.clear()
+            data.session.addAll(sortedData)
 
             sessionsList.add(data)
         }
@@ -77,7 +78,7 @@ class MainPresenter(private val databaseManager: IDatabaseManager): KoinComponen
 //
 //    fun getLastThreeMonthsData(): MutableList<SessionsData>{}
 
-    fun getAllData(): MutableList<SessionsData> {
+    fun getAllData(): Single<MutableList<SessionsData>> {
         return databaseManager.getCompleteListOfSessions()
     }
 }

@@ -2,13 +2,14 @@ package com.ayoprez.controlify.database
 
 import com.ayoprez.controlify.model.Session
 import com.ayoprez.controlify.model.SessionsData
+import io.reactivex.Single
 import org.threeten.bp.LocalDate
 
 interface IDatabaseManager {
 
-    fun getCompleteListOfSessions(): MutableList<SessionsData>
-    fun getCompleteListOfSessionsFromToday(): SessionsData
-    fun getCompleteListOfSessionsByDate(date: LocalDate): SessionsData
+    fun getCompleteListOfSessions(): Single<MutableList<SessionsData>>
+    fun getCompleteListOfSessionsFromToday(): Single<SessionsData>
+    fun getCompleteListOfSessionsByDate(date: LocalDate): Single<SessionsData>
     fun getLastCompleteListOfSessions(): SessionsData
 
     fun updateSessionsData(sessionsData: SessionsData)

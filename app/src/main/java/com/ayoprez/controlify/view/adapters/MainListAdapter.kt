@@ -44,7 +44,7 @@ class MainListAdapter(var sessionData: MutableList<SessionsData>?) : RecyclerVie
         }
 
         val numberOfChildrenInList = holder.itemView.ll_child_items.childCount
-        val numberOfChildrenInArray = dataSession?.sessions?.size ?: 0
+        val numberOfChildrenInArray = dataSession?.session?.size ?: 0
 
         if(numberOfChildrenInArray < numberOfChildrenInList) {
             for(index in numberOfChildrenInArray until numberOfChildrenInList){
@@ -55,7 +55,7 @@ class MainListAdapter(var sessionData: MutableList<SessionsData>?) : RecyclerVie
 
         for (i in 0 until numberOfChildrenInArray) {
             val child = holder.itemView.ll_child_items.getChildAt(i)
-            holder.setDataInChild(child, dataSession?.sessions?.get(i))
+            holder.setDataInChild(child, dataSession?.session?.get(i))
         }
     }
 
